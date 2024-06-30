@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  VITE_API_URL: https://api.example.com
+  VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
 jobs:
   lint:
