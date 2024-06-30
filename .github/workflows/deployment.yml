@@ -12,6 +12,7 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    environment: main
     steps:
       - name: Get Code
         uses: actions/checkout@v4
@@ -26,6 +27,7 @@ jobs:
         run: npm run lint
   test:
     runs-on: ubuntu-latest
+    environment: main
     needs: lint
     steps:
       - name: Get Code
@@ -41,6 +43,7 @@ jobs:
         run: npm run test
   build:
     runs-on: ubuntu-latest
+    environment: main
     needs: test
     steps:
       - name: Get Code
@@ -61,6 +64,7 @@ jobs:
           path: dist
   deploy:
     runs-on: ubuntu-latest
+    environment: main
     needs: build
     steps:
       - name: Get Artifact
