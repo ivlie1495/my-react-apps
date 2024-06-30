@@ -16,7 +16,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          key: npm-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
       - name: Run Lint
@@ -31,7 +31,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          key: npm-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
       - name: Run Test
@@ -46,7 +46,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          key: npm-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
       - name: Build
