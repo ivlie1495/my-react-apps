@@ -1,4 +1,4 @@
-name: Deployment
+name: Matrix
 
 on: workflow_dispatch
 
