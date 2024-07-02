@@ -71,14 +71,4 @@ jobs:
     runs-on: ubuntu-latest
     environment: main
     needs: build
-    steps:
-      - name: Get Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-      - name: Output Content
-        run: ls
-      - name: Output API URL
-        run: echo "${{ env.VITE_API_URL }}"
-      - name: Deploy
-        run: echo "Deploying..."
+    uses: ./.github/workflows/deploy.yml
