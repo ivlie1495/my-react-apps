@@ -71,4 +71,4 @@ jobs:
     runs-on: ubuntu-latest
     environment: main
     needs: build
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy-step.yml
