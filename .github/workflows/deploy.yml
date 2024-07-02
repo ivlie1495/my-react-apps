@@ -5,7 +5,7 @@ on:
     inputs:
       artifact-name:
         description: The name of the deployed artifact
-        required: true
+        required: false
         default: dist
         type: string
 
