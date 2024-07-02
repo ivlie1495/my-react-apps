@@ -1,17 +1,16 @@
 name: Deployment
 
-on:
-  push:
-  workflow_dispatch:
-    branches:
-      - main
+on: workflow_dispatch
 
 env:
   VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+    runs-on: ${{ matrix.operating-system }}
     environment: main
     steps:
       - name: Get Code
@@ -28,7 +27,10 @@ jobs:
       - name: Run Lint
         run: npm run lint
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+    runs-on: ${{ matrix.operating-system }}
     environment: main
     steps:
       - name: Get Code
@@ -45,7 +47,10 @@ jobs:
       - name: Run Test
         run: npm run test
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+    runs-on: ${{ matrix.operating-system }}
     environment: main
     needs: [lint, test]
     steps:
@@ -68,7 +73,10 @@ jobs:
           name: dist
           path: dist
   deploy:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+    runs-on: ${{ matrix.operating-system }}
     environment: main
     needs: build
     steps:
