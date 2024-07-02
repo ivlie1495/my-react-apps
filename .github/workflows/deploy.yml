@@ -1,6 +1,13 @@
 name: Deploy Step
 
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: The name of the deployed artifact
+        required: true
+        default: dist
+        type: string
 
 jobs:
   deploy:
@@ -10,7 +17,7 @@ jobs:
       - name: Get Artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: ${{ inputs.artifact-name }}
       - name: Output Content
         run: ls
       - name: Output API URL
