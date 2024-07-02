@@ -68,7 +68,5 @@ jobs:
           name: dist
           path: dist
   deploy:
-    runs-on: ubuntu-latest
-    environment: main
     needs: build
-    uses: ./.github/workflows/deploy-step.yml
+    uses: ./.github/workflows/deploy.yml
