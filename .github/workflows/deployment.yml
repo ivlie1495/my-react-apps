@@ -16,15 +16,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache Dependencies
-        id: cache-node-modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Get & Cache Dependencies
+        uses: ./.github/actions/cache-deps
       - name: Run Lint
         run: npm run lint
   test:
@@ -33,15 +26,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache Dependencies
-        id: cache-node-modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Get & Cache Dependencies
+        uses: ./.github/actions/cache-deps
       - name: Run Test
         run: npm run test
   build:
@@ -51,15 +37,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - name: Cache Dependencies
-        id: cache-node-modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Get & Cache Dependencies
+        uses: ./.github/actions/cache-deps
       - name: Build
         run: npm run build
       - name: Upload Artifact
