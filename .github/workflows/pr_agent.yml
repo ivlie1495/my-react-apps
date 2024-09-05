@@ -1,9 +1,6 @@
 name: PR Agent
 
-on:
-  pull_request:
-    types: [opened, reopened, ready_for_review]
-  issue_comment:
+on: workflow_dispatch
 
 jobs:
   pr_agent_job:
