@@ -98,6 +98,8 @@ function App() {
       // Process form submission
     } catch (error) {
       console.error('Error submitting form:', error)
+    } finally {
+      // Perform cleanup or update UI state
     }
   }
 
