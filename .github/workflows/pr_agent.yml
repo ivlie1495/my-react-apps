@@ -3,9 +3,6 @@ on:
     types: [opened, reopened, ready_for_review]
   issue_comment:
 
-env:
-  OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-
 jobs:
   pr_agent_job:
     if: ${{ github.event.sender.type != 'Bot' }}
@@ -16,9 +13,12 @@ jobs:
       contents: write
     name: Run pr agent on every pull request, respond to user comments
     steps:
+      - name: Check secret
+        run: echo ${{ secrets.OPENAI_KEY }}
+    steps:
       - name: PR Agent action step
         id: pragent
         uses: Codium-ai/pr-agent@main
         env:
-          OPENAI_KEY: ${{ env.OPENAI_KEY }}
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
