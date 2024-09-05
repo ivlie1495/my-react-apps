@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Check secret availability
         run: test -n "${{ secrets.OPENAI_KEY }}" && echo "Secret is available" || echo "Secret is missing"
+      - name: Check secret vite url
+        run: test -n "${{ secrets.VITE_API_URL }}" && echo "URL is available" || echo "URL is missing"
       - name: PR Agent action step
         id: pragent
         uses: Codium-ai/pr-agent@main
