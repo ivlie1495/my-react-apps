@@ -93,7 +93,7 @@ function App() {
   })
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    alert(JSON.stringify(data))
   }
 
   return (
