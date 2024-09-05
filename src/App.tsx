@@ -93,7 +93,12 @@ function App() {
   })
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    try {
+      console.log(data)
+      // Process form submission
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
   }
 
   return (
